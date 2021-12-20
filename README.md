@@ -6,7 +6,8 @@ Proton diffusivity in cubic-perovskite-structured BaZrO<sub>3</sub>.
 ![H-BZO](https://user-images.githubusercontent.com/93914342/146717021-419ab676-3871-48a1-8b86-b87be6da5965.png)
 
 # Programming language
-Python 3.x (installed through anaconda)
+Python 3.x (installed through anaconda
+
 Imported modules in this code: numpy, scipy, argparse, copy, datetime, os
 
 # Installation
@@ -14,6 +15,7 @@ Just download all files in your preferred directory.
 
 # Input file
 Only an input file, <b>jmpdata.csv</b>, is required, which includes initial and final site IDs, jump vectors, and jump frequencies for every atomic jump in unitcell. Note that all atomic jumps with initial sites in the unitcell have to be specified including the atomic jumps across the periodic boundary, and that both jumps in the opposite directions have to be specified separately. New line for different atomic jumps. “#” denotes a comment line. Put the following items for every atomic jump separated by comma. (Site IDs have to be sequential numbers starting from 1.)
+
 - Initial site ID [integer]: ID of the initial site for an atomic jump
 - Final site ID [integer]: ID of the final site for an atomic jump
 - x component of the jump vector [float]: The x component of jump vector in Å for an atomic jump
@@ -77,17 +79,14 @@ python [MASTEQ_DIR]/mkjmpdata.py --emig emig.csv --lb_T 300 --ub_T 500 --int_T 1
 ```
 
 # Author
-
 * Kazuaki Toyoura, PhD.
   Department of Mater. Sci. & Eng., Kyoto Univ.
 
 # Collaborator
-
 * Takeo Fujii, Mr.
   Department of Mater. Sci. & Eng., Kyoto Univ.
 
 # License
-
 MASTEQ is under [BSD 3-Clause License](https://opensource.org/licenses/BSD-3-Clause)
 
 
