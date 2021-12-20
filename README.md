@@ -3,7 +3,7 @@ Numerical estimator of atomic diffusivity in crystals using a master equation ap
 
 # Demo
 Proton diffusivity in cubic-perovskite-structured BaZrO<sub>3</sub>.
-![H-BZO](https://user-images.githubusercontent.com/93914342/146714057-03c77f01-5597-4bec-a2f4-e245d40da694.png)
+![H-BZO](https://user-images.githubusercontent.com/93914342/146717021-419ab676-3871-48a1-8b86-b87be6da5965.png)
 
 # Programming language
 Python 3.x (installed through anaconda)
