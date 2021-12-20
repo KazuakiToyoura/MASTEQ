@@ -81,3 +81,19 @@ When typing the following command, jmpdata_300K.csv, jmpdata_400K.csv, and jmpda
 ```
 python [MASTEQ_DIR]/mkjmpdata.py --emig emig.csv --lb_T 300 --ub_T 500 --int_T 100
 ```
+
+# Author
+
+* Kazuaki Toyoura, PhD.
+  Department of Mater. Sci. & Eng., Kyoto Univ.
+
+# Collaborator
+
+* Takeo Fujii, Mr.
+  Department of Mater. Sci. & Eng., Kyoto Univ.
+
+# License
+
+MASTEQ is under [BSD 3-Clause License](https://opensource.org/licenses/BSD-3-Clause)
+
+
