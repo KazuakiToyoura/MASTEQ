@@ -86,7 +86,15 @@ python [MASTEQ_DIR]/mkjmpdata.py --emig emig.csv --lb_T 300 --ub_T 500 --int_T 1
 * Takeo Fujii, Mr.
   Department of Mater. Sci. & Eng., Kyoto Univ.
 
+# References
+[1] K. Toyoura, T. Fujii, N. Hatada, D. Han, T. Uda, Carrier–Carrier Interaction in Proton-Conducting Perovskites: Carrier Blocking vs Trap-Site Filling, The Journal of Physical Chemistry C 123, 26823-26830 (2019).
+
+[2] K. Toyoura, T. Fujii, K. Kanamori, I. Takeuchi, Sampling strategy in efficient potential energy surface mapping for predicting atomic diffusivity in crystals by machine learning, Phys. Rev. B 101, 184117/1-11 (2020).
+
+[3] T. Fujii, K. Toyoura, T. Uda, S. Kasamatsu, Theoretical study on proton diffusivity in Y-doped BaZrO<sub>3</sub> with realistic dopant configurations, Phys. Chem. Chem. Phys. 23, 5908-5918 (2021).
+
 # License
 MASTEQ is under [BSD 3-Clause License](https://opensource.org/licenses/BSD-3-Clause)
+
 
 
