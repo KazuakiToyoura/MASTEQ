@@ -1,13 +1,3 @@
-"""
-This code is a numerical estimator of atomic diffusivity in crystals using a master equation approach. Only specifying the initial and final sites, jump vector, and jump frequency of every atomic jump in unitcell, the diffusion tensor is calculated under the indipendent particle approximation. See the following references for the detailed theoretical background.
-
-* Kazuaki Toyoura, Takeo Fujii, Kenta Kanamori, Ichiro Takeuchi, Sampling strategy in efficient potential energy surface mapping for predicting atomic diffusivity in crystals by machine learning, Physical Review B 101, 184117 (2020).
-* Kazuaki Toyoura, Takeo Fujii, Naoyuki Hatada, Donglin Han, Tetsuya Uda, Carrier–Carrier Interaction in Proton-Conducting Perovskites: Carrier Blocking vs Trap-Site Filling, The Journal of Physical Chemistry C 123, 26823-26830 (2019).
-
-This code was written by Kazuaki Toyoura. Mr. Takeo Fujii has great contribution to the code development with fruitful discussions.
-
-"""
-
 # Import modules
 import os
 os.environ["OMP_NUM_THREADS"] = "1"
@@ -19,7 +9,6 @@ np.set_printoptions(threshold=np.inf)
 
 # Import defined functions in separated files
 import read
-import mkJmpMat
 
 if __name__ == "__main__":
 	# Parse arguments.
