@@ -7,8 +7,16 @@ import warnings
 warnings.filterwarnings('ignore')
 np.set_printoptions(threshold=np.inf)
 
-# Import defined functions in separated files
-import read
+
+# Define function for reading emig.csv
+def read_emig(emig_file):
+	data = np.loadtxt(emig_file,dtype="str",delimiter=",",comments="#")
+	jmpSites = data[:,:2].astype(int) # Initial & final sites for each jump
+	jmpVec = data[:,2:5].astype(float) # Jump vector (cartesian) for each jump
+	emig = data[:,5].astype(float) # Migration energy for each jump [eV]
+	v0 = data[:,6].astype(float) # Jump frequency for each jump [THz]
+	return jmpSites, jmpVec, emig, v0
+
 
 if __name__ == "__main__":
 	# Parse arguments.
@@ -37,7 +45,7 @@ if __name__ == "__main__":
 
 
 	# Read jmpdata.csv.
-	jmpSites, jmpVec, emig, freq0 = read.read_emig(emig_file)
+	jmpSites, jmpVec, emig, freq0 = read_emig(emig_file)
 
 
 	# Make temperature lists
@@ -53,5 +61,10 @@ if __name__ == "__main__":
 		# Save jmpdata in jmpdata.csv.
 		np.savetxt("jmpdata_"+str(int(t))+"K.csv",jmpdata,delimiter=',',fmt=["%d","%d","%.10f","%.10f","%.10f","%.10e"],\
 				       header='#initialSiteID,finalSiteID,s_x[ang.],s_y[ang.],s_z[ang.],freq[Hz]')
+
+
+
+
+
 
 

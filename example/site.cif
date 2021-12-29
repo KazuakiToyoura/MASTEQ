@@ -1,0 +1,78 @@
+#======================================================================
+
+# CRYSTAL DATA
+
+#----------------------------------------------------------------------
+
+data_VESTA_phase_1
+
+
+_chemical_name_common                  'Ba (Zr O3)                            '
+_cell_length_a                         4.23621
+_cell_length_b                         4.23621
+_cell_length_c                         4.23621
+_cell_angle_alpha                      90
+_cell_angle_beta                       90
+_cell_angle_gamma                      90
+_space_group_name_H-M_alt              'P m -3 m'
+_space_group_IT_number                 221
+
+loop_
+_space_group_symop_operation_xyz
+   'x, y, z'
+   '-x, -y, -z'
+   '-x, -y, z'
+   'x, y, -z'
+   '-x, y, -z'
+   'x, -y, z'
+   'x, -y, -z'
+   '-x, y, z'
+   'z, x, y'
+   '-z, -x, -y'
+   'z, -x, -y'
+   '-z, x, y'
+   '-z, -x, y'
+   'z, x, -y'
+   '-z, x, -y'
+   'z, -x, y'
+   'y, z, x'
+   '-y, -z, -x'
+   '-y, z, -x'
+   'y, -z, x'
+   'y, -z, -x'
+   '-y, z, x'
+   '-y, -z, x'
+   'y, z, -x'
+   'y, x, -z'
+   '-y, -x, z'
+   '-y, -x, -z'
+   'y, x, z'
+   'y, -x, z'
+   '-y, x, -z'
+   '-y, x, z'
+   'y, -x, -z'
+   'x, z, -y'
+   '-x, -z, y'
+   '-x, z, y'
+   'x, -z, -y'
+   '-x, -z, -y'
+   'x, z, y'
+   'x, -z, y'
+   '-x, z, -y'
+   'z, y, -x'
+   '-z, -y, x'
+   'z, -y, x'
+   '-z, y, -x'
+   '-z, y, x'
+   'z, -y, -x'
+   '-z, -y, -x'
+   'z, y, x'
+
+loop_
+   _atom_site_label
+   _atom_site_occupancy
+   _atom_site_fract_x
+   _atom_site_fract_y
+   _atom_site_fract_z
+   _atom_site_type_symbol
+   H     1.0    0.000000  0.284854  0.500000    H
