@@ -36,7 +36,7 @@ Type the following command at the directory with jmpdata.csv. The estimated diff
 python [MASTEQ_DIR]/masteq.py --jmp jmpdata.csv --nonzero 1,2,3 --factor 1.0e-3 > stdout
 ```
 # Options
-- --h: Help information. List of options in this code.
+- -h, --help: Help information. List of options in this code.
 
 - --jmp: File name of atomic jump data in a given system. If it is the default name (jmpdata.csv), the argument is not necessary.
 
@@ -67,16 +67,57 @@ This program makes multiple jmpdata.csv all at once in a specified temperature r
 
 The temperature range [K] is specified by three parameters, i.e., lb_T (lower bound of temperature), ub_T (upper bound of temperature), and int_T (interval of temperature), which are specified as arguments.
 
-- --h:		Help information. List of options in this code.
+- -h, --help: Help information. List of options in this code.
 - --emig:	File name of migration energy [eV] and vibrational prefactor [Hz] for every atomic jump. If it is the default name (emig.csv), this argument is not necessary.
-- --lb_T:		Lower bound of the temperature range [K]. Default value is 300.
+- --lb_T: Lower bound of the temperature range [K]. Default value is 300.
 - --ub_T:		Upper bound of the temperature range [K]. Default value is 1000.
 - --int_T:		Interval of the temperature step [K]. Default value is 100.
 
 When typing the following command, jmpdata_300K.csv, jmpdata_400K.csv, and jmpdata_500K.csv are generated.
 ```
-python [MASTEQ_DIR]/mkjmpdata.py --emig emig.csv --lb_T 300 --ub_T 500 --int_T 100
+python [MASTEQ_DIR]/tools/mkjmpdata.py --emig emig.csv --lb_T 300 --ub_T 500 --int_T 100
 ```
+
+### mkemig.py
+This program makes emig.csv from only the information on crystallographically non-equivalent atomic jumps. Specifically, two files are required, site.cif with site information of diffusion carriers and emig_noneq.csv with jump information including the initial and final site types, jump distance [ang.], migration energy [eV], and vibrational prefactor [Hz]. All equivalent sites in the unitcell are generated using symmetry operations in site.cif, and the equivalent atomic jumps are then searched by the jump distance and the initial and final site types specified in emig_noneq.csv.
+
+For reading site.cif by <i>pymatgen</i>, non-equivalent site types of diffusion carriers have to be distinguished by element symbols (H, He, Li, Be, …), whatever the diffusion carriers are. The example of site information line is shown below.
+
+(Site information example in site.cif)
+```
+loop_
+   _atom_site_label
+   _atom_site_occupancy
+   _atom_site_fract_x
+   _atom_site_fract_y
+   _atom_site_fract_z
+   _atom_site_type_symbol
+   H      1.0    0.000000  0.000000  0.000000    H
+   He     1.0    0.500000  0.500000  0.500000    He
+   Li     1.0    0.000000  0.500000  0.500000    Li
+```
+
+Concerning the file format of emig_noneq.csv, non-equivalent atomic jumps are specified by the initial and final site types (element symbols in site.cif), the jump distance [ang.], &Delta;<i>E</i><sub>mig</sub> [eV], and &nu;<sub>0</sub> [Hz], separated by comma. New line for different atomic jumps. Both jumps in the opposite directions have to be specified separately, if they are non-equivalent. “#” denotes a comment line. The file example is as follows:
+
+(emig_noneq.csv example)
+```
+#InitialSiteType,FinalSiteType,jumpDistance[Ang.],DEmig[eV],v0[Hz]
+H,Li,1.41421356,0.30,1.0e+13
+Li,H,1.41421356,0.20,1.0e+13
+He,Li,1.00000000,0.35,1.0e+13
+Li,He,1.00000000,0.30,1.0e+13
+```
+
+Type the following command at the directory with site.cif and emig_noneq.csv, emig.csv is generated.
+```
+python [MASTEQ_DIR]/tools/mkemig.py –cif site.cif –emig_noneq emig_noneq.csv --supercell 1,1,1 --prec 1.0e-4
+```
+The option of this program is as follows:
+- -h, --help: Help information. List of options in this code.
+- --cif: File name of the cif file with site information. If it is the default name (site.cif), this argument is not necessary.
+- -- emig_noneq: File name with information on non-equivalent atomic jumps. Initial and final site type, jump vector, Emig, and vibrational prefactor in the csv format. New line for non-equivalent atomic jumps. Both jumps in the opposite directions have to be specified if they are non-equivalent. Site types have to be specified by ELEMENT SYMBOL! e.g., H, He, Li, Be, B, etc. If it is the default name (emig_noneq.cif), this argument is not necessary.
+- -- supercell:	Supercell size for expanding unitcell. Since the inter-site distance is defined as the 1NN distance with periodicity, longer jump vectors than the half of lattice vectors are not accepted in this program. '3,3,3' is enough even for a small cell with few sites. Default value: 1,1,1
+- --prec: Precision used in symmetry operation and atomic jump search. Default value: 1.0e-4
 
 # Author
 * Kazuaki Toyoura, PhD.
@@ -95,6 +136,4 @@ python [MASTEQ_DIR]/mkjmpdata.py --emig emig.csv --lb_T 300 --ub_T 500 --int_T 1
 
 # License
 MASTEQ is under [BSD 3-Clause License](https://opensource.org/licenses/BSD-3-Clause)
-
-
 
