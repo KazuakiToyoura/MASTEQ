@@ -110,7 +110,7 @@ Li,He,1.00000000,0.30,1.0e+13
 
 Type the following command at the directory with site.cif and emig_noneq.csv, emig.csv is generated.
 ```
-python [MASTEQ_DIR]/tools/mkemig.py –cif site.cif –emig_noneq emig_noneq.csv --supercell 1,1,1 --prec 1.0e-4
+python [MASTEQ_DIR]/tools/mkemig.py --cif site.cif –emig_noneq emig_noneq.csv --supercell 1,1,1 --prec 1.0e-4
 ```
 The option of this program is as follows:
 - -h, --help: Help information. List of options in this code.
