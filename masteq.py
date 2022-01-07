@@ -1,5 +1,7 @@
 """
-This code is a numerical estimator of atomic diffusivity in crystals using a master equation approach. Only specifying the initial and final sites, jump vector, and jump frequency of every atomic jump in unitcell, the diffusion tensor is calculated under the independent particle approximation. See the following references for the detailed theoretical background. This code was written by Kazuaki Toyoura. Mr. Takeo Fujii has great contribution to the code development with fruitful discussions.
+ver.1.1.0, Jan. 2022.
+MASTEQ is a numerical estimator of atomic diffusivity in crystals using a master equation approach. Only specifying the initial and final sites, jump vector, and jump frequency of every atomic jump in unitcell, the diffusion tensor is calculated under the independent particle approximation. See the following references for the detailed theoretical background. Note that any interaction between diffusion carriers cannot be treated until ver.1.0.2. After ver.1.1.0, site blocking can be treated by correcting jump frequencies based on the site occupancies by siteblk.py in tools directory.
+This code was written by Kazuaki Toyoura. Mr. Takeo Fujii has great contribution to the code development with fruitful discussions.
 
 
 * Kazuaki Toyoura, Takeo Fujii, Kenta Kanamori, Ichiro Takeuchi, Sampling strategy in efficient potential energy surface mapping for predicting atomic diffusivity in crystals by machine learning, Physical Review B 101, 184117 (2020).
