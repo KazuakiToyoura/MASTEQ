@@ -124,7 +124,7 @@ The option of this program is as follows:
 - --prec: Precision used in symmetry operation and atomic jump search. Default value: 1.0e-4
 
 ### siteblk.py
-This program corrects jmpdata.csv taking a simple carrier-carrier interaction into account, i.e., <b><i>site blocking</i></b>. <b><i>site blocking</i></b> means that any site in a given system cannot be occupied by more than one diffusion carriers at the same time. The thermal equilibrium site occupancy can easily be estimated from Fermi distribution. In this program, the site blocking is extended by defining exclusive region around every site, which cannot be occupied by the other carriers as long as the focused site is occupied by a diffusion carrier.
+This program corrects jmpdata.csv taking a simple carrier-carrier interaction into account, i.e., <b><i>site blocking</i></b>. <b><i>Site blocking</i></b> means that any site in a given system cannot be occupied by more than one diffusion carriers at the same time. The thermal equilibrium site occupancy can easily be estimated from Fermi distribution. In this program, the site blocking is extended by defining exclusive region around every site, which cannot be occupied by the other carriers as long as the focused site is occupied by a diffusion carrier.
 
 The three input files are required in this program as follows:
 - jmpdata.csv: jmpdata.csv under independent-particle approximation without any carrier-carrier interaction.
