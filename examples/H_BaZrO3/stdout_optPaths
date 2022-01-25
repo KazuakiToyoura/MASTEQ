@@ -1,0 +1,60 @@
+##############################
+2022-01-25 13:00:30.557163
+Start program!
+############################## 
+
+Reading input files.
+
+Start searching optimal paths!
+------------------------------
+Iteration 10:
+  Optimal path 1 is found!
+Iteration 17:
+  Optimal path 2 is found!
+Iteration 19:
+  Optimal path 3 is found!
+------------------------------
+
+Found optimal paths
+------------------------------
+Optimal path 1:
+  Direction: [ -1  0  0 ]
+  Emig [eV]: 0.25000
+  Path (site ID, [cell ID]):
+    (     7,  [  0  0  0 ] )
+    (     4,  [  0  0 -1 ] )
+    (     8,  [  0  0  0 ] )
+      -- Rate limiting --
+    (     1,  [  0  0  0 ] )
+    (     7,  [ -1  0  0 ] )
+------------------------------
+Optimal path 2:
+  Direction: [  0  0  1 ]
+  Emig [eV]: 0.25000
+  Path (site ID, [cell ID]):
+    (     6,  [  0 -1 -1 ] )
+      -- Rate limiting --
+    (     9,  [  0 -1 -1 ] )
+    (     1,  [  0  0  0 ] )
+    (    10,  [  0 -1  0 ] )
+    (     6,  [  0 -1  0 ] )
+------------------------------
+Optimal path 3:
+  Direction: [ -1 -1  0 ]
+  Emig [eV]: 0.25000
+  Path (site ID, [cell ID]):
+    (     7,  [  0  0  0 ] )
+    (     4,  [  0  0 -1 ] )
+    (     8,  [  0  0  0 ] )
+      -- Rate limiting --
+    (     1,  [  0  0  0 ] )
+    (     9,  [  0 -1 -1 ] )
+    (     2,  [  0 -1  0 ] )
+    (     7,  [ -1 -1  0 ] )
+------------------------------
+
+##############################
+2022-01-25 13:00:30.561400
+Finish program!
+############################## 
+

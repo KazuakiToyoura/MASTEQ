@@ -84,7 +84,7 @@ if __name__ == "__main__":
 	f.write("#initialSiteID,finalSiteID,s_x[Ang.],s_y[Ang.],s_z[Ang.],emig[eV],v0[Hz]\n")
 	for n in range(jmpSiteIDs.shape[0]): # Loop for jump types
 		cids_i = sid2cid[mg.Element(jmpSiteIDs[n,0])] # coordinate ids of initial site type
-		cids_j = sid2cid[mg.Element(jmpSiteIDs[n,0])] # cid candidates of final site type
+		cids_j = sid2cid[mg.Element(jmpSiteIDs[n,1])] # cid candidates of final site type
 
 		for i in cids_i: # Loop for initial sites
 			# Search final sites with a specified distance
