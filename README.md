@@ -6,9 +6,13 @@ Proton diffusivity in cubic-perovskite-structured BaZrO<sub>3</sub>.
 ![H-BZO](https://user-images.githubusercontent.com/93914342/146717021-419ab676-3871-48a1-8b86-b87be6da5965.png)
 
 # Programming language
-Python 3.x (installed through anaconda
+Python 3.x (installed through anaconda, https://www.anaconda.com/products/individual)
 
 Imported modules in this code: numpy, scipy, argparse, copy, datetime, os, sys
+
+<b><i>mkemig.py</i></b> in tools requires <b><i>pymatgen</i></b>, https://pymatgen.org/.
+
+<b><i>optPathSearch.py</i></b> in tools requires <b><i>anytree</i></b>, https://anytree.readthedocs.io/en/latest/index.html.
 
 # Installation
 Just download all files in your preferred directory.
@@ -116,7 +120,7 @@ Type the following command at the directory with site.cif and emig_noneq.csv, em
 ```
 python [MASTEQ_DIR]/tools/mkemig.py --cif site.cif –emig_noneq emig_noneq.csv --supercell 1,1,1 --prec 1.0e-4
 ```
-The option of this program is as follows:
+The options of this program are as follows:
 - -h, --help: Help information. List of options in this code.
 - --cif: File name of the cif file with site information. If it is the default name (site.cif), this argument is not necessary.
 - -- emig_noneq: File name with information on non-equivalent atomic jumps. Initial and final site type, jump vector, Emig, and vibrational prefactor in the csv format. New line for non-equivalent atomic jumps. Both jumps in the opposite directions have to be specified if they are non-equivalent. Site types have to be specified by ELEMENT SYMBOL! e.g., H, He, Li, Be, B, etc. If it is the default name (emig_noneq.cif), this argument is not necessary.
@@ -148,7 +152,7 @@ Type the following command at the directory with jmpdata.csv, sitePE.csv, and ex
 ```
 python [MASTEQ_DIR]/tools/siteblk.py --jmp jmpdata.csv --sitePE sitePE.csv --excl excl.csv --T 500 --n 300 --prec exact
 ```
-The option of this program is as follows:
+The options of this program are as follows:
 - -h, --help: Help information. List of options in this code.
 - --jmp: File name of atomic jump data in a given system under the independent-particle approximation. Default name (jmpdata.csv) can be skipped.
 - --sitePE: File name with the information of site PEs. Default name (sitePE.csv) can be skipped.
@@ -157,6 +161,20 @@ The option of this program is as follows:
 - --n: The number of diffusion carriers in the system [integer]. Default value is 1, meaning no correction.
 - --prec: Precision for estimation of site occupancies [string]. 'exact' or 'rough'. Default value is 'exact'. If the number of sites in a given system is too large (> 10000), the occupancy estimation is time consuming. In such case, try to use prec = 'rough'.
 
+### optPathSearch.py
+This program searches the optimal path in a given crystal, which is defined as the lowest-energy path between two global minimum points separated by a lattice translation vector. In other words, the optimal path corresponds to the long-range migration pathway in the crystal. In general, there are three linearly-independent optimal paths. This program is based on dynamic programing. See Ref. [4] for the details of the algorithm. This program requires <b><i>emig.csv</i></b> and <b><i>sitePE.csv</i></b>. In addition, the three lattice vectors (<b>a</b>, <b>b</b>, and <b>c</b>) are also required, which should be specified in Cartesian coordinate [Å]. Type the following command at the directory with emig.csv and sitePE.csv, and the information of optimal paths is printed on the standard output. The direction of optimal path is shown by integer ratios of the lattice vectors. Note that the direction and trajectory of the optimal path could be only an example, particularly in a highly-symmetric crystal. For example, the diffusivity is isotropic in a cubic system, where any long-range path has the same potential barrier.
+```
+python [MASTEQ_DIR]/tools/optPathSearch.py --emig emig.csv --sitePE sitePE.csv --a 4.23621,0.0,0.0 --b 0.0,4.23621,0.0 --c 0.0,0.0,4.23621 --n_path 3 --gmin 0 > stdout_ops
+```
+The options of this program are as follows:
+- -h, --help: Help information. List of options in this code.
+- --emig: File name of migration energy [eV] and vibrational prefactor [Hz] for every atomic jump. If it is the default name (emig.csv), this argument is not necessary.
+- --sitePE: File name with the information of site PEs. Default name (sitePE.csv) can be skipped.
+- --a: Lattice vector <b>a</b> in Cartesian coordinate [Å]. e.g.)  4.23621,0.00000,0.00000
+- --b: Lattice vector <b>b</b> in Cartesian coordinate [Å]. e.g.)  0.00000, 4.23621,0.00000
+- --c: Lattice vector <b>c</b> in Cartesian coordinate [Å]. e.g.)  0.00000,0.00000,4.23621
+- --n_path: Number of optimal paths explored in this program. Default value is 1.
+- --gmin: Site ID of the global minimum point. If gmin = 0, it is searched in sitePE.csv. Default value is 0.
 
 # Author
 * Kazuaki Toyoura, PhD.
@@ -172,6 +190,8 @@ The option of this program is as follows:
 [2] K. Toyoura, T. Fujii, K. Kanamori, I. Takeuchi, Sampling strategy in efficient potential energy surface mapping for predicting atomic diffusivity in crystals by machine learning, Phys. Rev. B 101, 184117/1-11 (2020).
 
 [3] T. Fujii, K. Toyoura, T. Uda, S. Kasamatsu, Theoretical study on proton diffusivity in Y-doped BaZrO<sub>3</sub> with realistic dopant configurations, Phys. Chem. Chem. Phys. 23, 5908-5918 (2021).
+
+[4] K. Kanamori, K. Toyoura, J. Honda, K. Hattori, A. Seko, M. Karasuyama, K. Shitara, M. Shiga, A. Kuwabara, I. Takeuchi, Exploring a potential energy surface by machine learning for characterizing atomic transport, Phys. Rev. B 97, 125124/1-6 (2018).
 
 # License
 MASTEQ is under [BSD 3-Clause License](https://opensource.org/licenses/BSD-3-Clause)
