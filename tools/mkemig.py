@@ -106,7 +106,7 @@ if __name__ == "__main__":
 				jmpVec_xyz = np.where((jmpVec_xyz>-1.0e-10)&(jmpVec_xyz<1.0e-10),\
 						     1.0e-10,jmpVec_xyz)
 				# Output
-				f.write("{:d},{:d},{:.8f},{:.8f},{:.8f},{:.4f},{:.5e}\n"\
+				f.write("{:d},{:d},{:.10f},{:.10f},{:.10f},{:.10f},{:.5e}\n"\
 						    .format(i+1,j+1,jmpVec_xyz[0],jmpVec_xyz[1],jmpVec_xyz[2],emig[n],v0[n]))
 	
 	f.close()
