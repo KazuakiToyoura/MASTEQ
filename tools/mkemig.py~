@@ -92,7 +92,7 @@ if __name__ == "__main__":
 					              (distMat[i,cids_j]<jmpDist[n]+prec))[0] + np.min(cids_j)
 			
 			for j in cids_f: # Loop for final sites
-				jmpVec_frac = siteSt.frac_coords[j,:] - siteSt.frac_coords[i,:] # jump vector
+				jmpVec_frac = siteSt.frac_coords[i,:] - siteSt.frac_coords[j,:] # jump vector
 				# jmpVec_frac is modified in the range -0.5 <= x <= 0.5 
 				while np.any(jmpVec_frac<-0.5): 
 					jmpVec_frac = np.where(jmpVec_frac<-0.5,jmpVec_frac+1.0,jmpVec_frac)
